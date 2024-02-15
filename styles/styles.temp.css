@@ -1,0 +1,133 @@
+/* styles.css */
+
+:root {
+
+    /*Color Library */
+    --whitePink: #ffe7f7;
+    --midPink: #ffc0e9;
+    --MidPurple: #744481;
+    --DarkPurple: #40003a;
+    --lightGrey: #808080;
+    --darkGrey: #404040;
+
+    /*Font Color Library */
+    --textDark: #ffffff;
+    --textLight: var(--whitePink);
+    --backgroundColor: var(--whitePink);
+    --fadedTextColor: rgba(255, 231, 247, 0.5);
+
+    /*Button Color Library */
+    --mainButtonColor: #ffc0e9;
+    --mainButtonHoverColor: #ffffff;
+    --buttonSecondaryColor: #ff0000;
+
+    /*Section Color Library */
+    --transparentBackground: rgba(0, 0, 0, 0);
+    --headerBackground: var(--darkGrey);
+    --footerBackground: var(--darkGrey);
+}
+
+@font-face {
+    font-family: 'Animal Crossing: Wild World';
+    src: url('Animal-Crossing-Wild-World.eot');
+    src: local('Animal Crossing: Wild World Regular'), local('Animal-Crossing:-Wild-World'),
+        url('Animal-Crossing-Wild-World.eot?#iefix') format('embedded-opentype'),
+        url('Animal-Crossing-Wild-World.woff2') format('woff2'),
+        url('Animal-Crossing-Wild-World.woff') format('woff'),
+        url('Animal-Crossing-Wild-World.ttf') format('truetype'),
+        url('Animal-Crossing-Wild-World.svg#Animal-Crossing:-Wild-World') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* to prevent scrollbar due to animation */
+    background-color: var(--backgroundColor); /* Change background color */
+    font-family: 'Animal Crossing: Wild World';
+    font-weight: normal;
+    font-style: normal;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--headerBackground); /* Change header background color */
+    padding: 20px;
+}
+
+#header button {
+    background-color: var(--mainButtonColor); /* Change button background color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--textPrimary); /* Change button text color */
+    font-size: 20px; /* Change button font size */
+    font-family: 'Animal Crossing: Wild World';
+    font-weight: normal;
+    font-style: normal;
+        
+}
+
+#header button:hover {
+    background-color: var(--mainButtonHoverColor); /* Change button background color on hover */
+}
+
+#logo {
+    height: calc(100vh - 60px); /* adjust based on header height */
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    height: auto;
+    cursor: pointer;
+}
+
+#content {
+    height: calc(100vh - 60px); /* adjust based on header height */
+    background: var(--transparentBackground) center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Additional styling for content area */
+#content a {
+    text-decoration: none;
+}
+
+#content a:hover {
+    opacity: 0.8; /* Change opacity on logo hover */
+}
+
+#footer {
+    background-color: #333; /* Change footer background color */
+    color: #fff; /* Change footer text color */
+    color: rgba(255,255,255, .3);
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Animal Crossing: Wild World';
+}
+
+#myCanvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}

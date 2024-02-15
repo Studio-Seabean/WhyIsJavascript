@@ -1,0 +1,197 @@
+My project is structured in the following way: I have a folder on my desktop called "Local JS Project File".  
+In that folder are folders labeled "fonts", "img", "js", and "styles" as well as my index.html file.  
+In the "fonts" folder there are the following file names: 
+    Animal-Crossing-Wild-World copy.eot
+    Animal-Crossing-Wild-World copy.svg
+    Animal-Crossing-Wild-World copy.ttf
+    Animal-Crossing-Wild-World copy.woff
+    Animal-Crossing-Wild-World copy.woff2
+In the "img" folder there are the following filenames:
+    70percentBIG.png
+    favicon-16x16.png
+    favicon-32x32.png
+    favicon.ico
+    all.png
+    back.png
+    cloud1.png
+    cloud2.png
+    cloud3.png
+    front.png
+    middle.png
+    StudioSeabeanOnPlains.png
+In the "js" folder there are the following filenames:
+    main.js
+In the "styles" folder there are the following filenames:
+    styles.css
+
+
+This is my main.js code:
+// This creates the javascript container variable that will contain all of the images
+const container = document.querySelector('.container');
+
+// This is an array to store all of the parallax layers
+const parallaxLayers = [];
+
+// This function will CREATE each parallax layer (image element) and assign it to the parallaxLayers array.
+// It will give each layer a set of properties that will be used to animate and display the image.
+function createParallaxLayer(src, speed) {
+    // Create a new image element
+    const layer = document.createElement('img');
+    layer.classList.add('parallax-layer');
+    layer.src = src;
+    layer.alt = 'Layer Image';
+    layer.style.width = '100%'; // Adjust width as needed
+    layer.style.imageRendering = 'pixelated'; // Adjust image rendering as needed
+    layer.style.position = 'absolute';
+    layer.style.top = '50%';
+    //layer.style.left = '50%';
+    layer.style.transform = 'translate(-50%, -50%)';
+    
+    // Append the layer to the container
+    container.appendChild(layer);
+    
+    // Store the layer and its speed in the parallaxLayers array
+    parallaxLayers.push({ element: layer, speed: speed });
+}
+
+// Create and append each parallax layer
+createParallaxLayer('img/cloud1.png', 1);
+createParallaxLayer('img/cloud2.png', 2);
+createParallaxLayer('img/cloud3.png', 3);
+createParallaxLayer('img/back.png', 4);
+createParallaxLayer('img/middle.png', 5);
+createParallaxLayer('img/front.png', 6);
+//createParallaxLayer('img/img/70percentBIG.png', 0.0);
+
+// Function to handle parallax effect
+function handleParallax() {
+    // Get the current time
+    const currentTime = Date.now();
+
+    // Calculate the elapsed time since the animation started
+    const elapsedTime = currentTime - startTime;
+
+    // Get the container width
+    const containerWidth = container.offsetWidth;
+    
+    // Loop through each parallax layer
+    parallaxLayers.forEach(function(layerInfo) {
+        const layer = layerInfo.element;
+        const speed = layerInfo.speed;
+        
+        // Update the position of the layer based on the timer and speed
+        let xPos = -(elapsedTime * speed / 1000);
+        
+        layer.style.transform = 'translateX(' + xPos + 'px) translateY(-50%)';
+    });
+
+    requestAnimationFrame(handleParallax);
+}
+
+const startTime = Date.now();
+
+requestAnimationFrame(handleParallax);
+
+// // Set the interval for the parallax effect
+// const interval = 0.001; // Adjust the interval as needed
+// setInterval(handleParallax, interval);
+
+This is my styles.css:
+
+/* styles.css */
+
+:root {
+
+    /*Color Library */
+    --whitePink: #ffe7f7;
+    --midPink: #ffc0e9;
+    --MidPurple: #744481;
+    --DarkPurple: #40003a;
+    --lightGrey: #808080;
+    --darkGrey: #404040;
+
+    /*Font Color Library */
+    --textDark: #ffffff;
+    --textLight: var(--whitePink);
+    --backgroundColor: var(--whitePink);
+    --fadedTextColor: rgba(255, 231, 247, 0.5);
+
+    /*Button Color Library */
+    --mainButtonColor: #ffc0e9;
+    --mainButtonHoverColor: #ffffff;
+    --buttonSecondaryColor: #ff0000;
+
+    /*Section Color Library */
+    --transparentBackground: rgba(0, 0, 0, 0);
+    --headerBackground: var(--darkGrey);
+    --footerBackground: var(--darkGrey);
+}
+
+@font-face {
+    font-family: 'Animal Crossing: Wild World';
+    src: url('Animal-Crossing-Wild-World.eot');
+    src: local('Animal Crossing: Wild World Regular'), local('Animal-Crossing:-Wild-World'),
+        url('Animal-Crossing-Wild-World.eot?#iefix') format('embedded-opentype'),
+        url('Animal-Crossing-Wild-World.woff2') format('woff2'),
+        url('Animal-Crossing-Wild-World.woff') format('woff'),
+        url('Animal-Crossing-Wild-World.ttf') format('truetype'),
+        url('Animal-Crossing-Wild-World.svg#Animal-Crossing:-Wild-World') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+}
+
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.parallax-layer {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.animate{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+}
+
+
+
+
+
+This is my index.html: 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Seabean</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+
+
+<body>
+    <div class ="container">
+        <div class ="animate"><script src="js/main.js"></script></div>
+      </div> 
+</body>
+
